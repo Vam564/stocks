@@ -3,11 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { stockProvider,stockContext } from './ContextAPI/stockContext';
+import { FlipkartProvider } from './ContextAPI/FlipkartContext';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <FlipkartProvider>
+     <App />
+  </FlipkartProvider>,
+  
+    
+  
   document.getElementById('root')
 );
 
