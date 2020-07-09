@@ -44,97 +44,97 @@ const FlipkartMainuseAPI =()=> {
 
         })
     }, []);
-    useEffect((prevState) => {
-        dispatch({type:'UPDATE_TOTALS'})
-    }, [shoppingCart,cart])
+    // useEffect((prevState) => {
+    //     dispatch({type:'UPDATE_TOTALS'})
+    // }, [shoppingCart,cart])
 
-    const AddToCart = (index) => {
-        dispatch({ type: 'ADD_TO_CART', context: { index } })
+    // const AddToCart = (index) => {
+    //     dispatch({ type: 'ADD_TO_CART', context: { index } })
         
        
-    }
-    const display =()=>{
-        dispatch({ type: 'DISPLAY',context:{search} })
+    // }
+    // const display =()=>{
+    //     dispatch({ type: 'DISPLAY',context:{search} })
        
-    }
-    const handleInput = ({target}) =>{
-        dispatch({ type: 'HANDLE_INPUT', context: { target } })
-    }
-    const incrementCounter = (index) => {
+    // }
+    // const handleInput = ({target}) =>{
+    //     dispatch({ type: 'HANDLE_INPUT', context: { target } })
+    // }
+    // const incrementCounter = (index) => {
       
-        dispatch({type:'INCREMENT_COUNTERS',context:{index}})
-    }
-    const decrementCounter = (index) => {
-        dispatch({type:'DECREMENT_QUANTITY',context:{index}})
+    //     dispatch({type:'INCREMENT_COUNTERS',context:{index}})
+    // }
+    // const decrementCounter = (index) => {
+    //     dispatch({type:'DECREMENT_QUANTITY',context:{index}})
 
-    }
-    const deleteItem = (index) => {
+    // }
+    // const deleteItem = (index) => {
        
-        dispatch({type:'DELETE_ITEMS',context:{index}})
-    }
-    const handleInputReg=({target})=>{
+    //     dispatch({type:'DELETE_ITEMS',context:{index}})
+    // }
+    // const handleInputReg=({target})=>{
        
-        dispatch({
-            type: 'HANDLE_INPUT_REG',
-            context:{target}
-        })
-    }
-    const handleReg=()=>{
-        localStorage.setItem("userR",reg.userR)
-        localStorage.setItem("pwdR",reg.pwdR)
-        console.log(reg.userR)
-        console.log(reg.pwdR)
-        alert("Hey "+reg.userR +" you are registered !!")
+    //     dispatch({
+    //         type: 'HANDLE_INPUT_REG',
+    //         context:{target}
+    //     })
+    // }
+    // const handleReg=()=>{
+    //     localStorage.setItem("userR",reg.userR)
+    //     localStorage.setItem("pwdR",reg.pwdR)
+    //     console.log(reg.userR)
+    //     console.log(reg.pwdR)
+    //     alert("Hey "+reg.userR +" you are registered !!")
 
-    }
-    const handleInputLog=({target})=>{
+    // }
+    // const handleInputLog=({target})=>{
         
-        dispatch({
-            type: 'HANDLE_INPUT_LOG',
-            context:{target}
-        })
-    }
-    const handleLog=()=>{
-        var reguser=localStorage.getItem("userR")
-        var regpwd=localStorage.getItem("pwdR")
-        console.log(reguser);
-        console.log(regpwd);
-        if(login.user==reguser&&login.pwd==regpwd)
-        {
-            dispatch({
-                type: 'USER_LOGIN',
-                context:{reguser}
-            })
-            alert(reguser +"  you have logged in succesfully")
-        }else{
-            alert("Invalid details")
-        }
+    //     dispatch({
+    //         type: 'HANDLE_INPUT_LOG',
+    //         context:{target}
+    //     })
+    // }
+    // const handleLog=()=>{
+    //     var reguser=localStorage.getItem("userR")
+    //     var regpwd=localStorage.getItem("pwdR")
+    //     console.log(reguser);
+    //     console.log(regpwd);
+    //     if(login.user==reguser&&login.pwd==regpwd)
+    //     {
+    //         dispatch({
+    //             type: 'USER_LOGIN',
+    //             context:{reguser}
+    //         })
+    //         alert(reguser +"  you have logged in succesfully")
+    //     }else{
+    //         alert("Invalid details")
+    //     }
        
-    }
-    const dropDownFilter = (index,e,item) => 
-    {
-        console.log(e.target.value , index)
-        const {target}=e
-        dispatch({
-            type: 'DROPDOWN_FILTER',
-            context:{index,target,item}
-        })
-    }
+    // }
+    // const dropDownFilter = (index,e,item) => 
+    // {
+    //     console.log(e.target.value , index)
+    //     const {target}=e
+    //     dispatch({
+    //         type: 'DROPDOWN_FILTER',
+    //         context:{index,target,item}
+    //     })
+    // }
    
 
     return {
-        state,
-        AddToCart,
-        display,
-        handleInput,
-        incrementCounter,
-        decrementCounter,
-        deleteItem,
-        handleInputLog,
-        handleInputReg,
-        handleLog,
-        handleReg,
-        dropDownFilter
+        state
+        // AddToCart,
+        // display,
+        // handleInput,
+        // incrementCounter,
+        // decrementCounter,
+        // deleteItem,
+        // handleInputLog,
+        // handleInputReg,
+        // handleLog,
+        // handleReg,
+        // dropDownFilter
 }
 }
 

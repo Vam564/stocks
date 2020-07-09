@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { stockProvider,stockContext } from './ContextAPI/stockContext';
 import { FlipkartProvider } from './ContextAPI/FlipkartContext';
+import { SMSProvider } from './ContextAPI/SMSContext';
 
 ReactDOM.render(
-  <FlipkartProvider>
-     <App />
-  </FlipkartProvider>,
+  <SMSProvider>
+<App />
+  </SMSProvider>,
+  
+     
+  
   
     
   

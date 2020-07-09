@@ -22,8 +22,10 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-
-  <!-- Md Bootstrap CSS links start -->
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <!--  
+     Md Bootstrap CSS links start --> 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
   <!-- Google Fonts -->
@@ -46,12 +48,37 @@
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/js/mdb.min.js"></script>
   <!-- Md Bootstrap JS links end -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
   <title>React App</title>
 </head>
 
 <body>
+  
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '280992493342883',
+      cookie     : true,
+      xfbml      : true,
+      version    : '{api-version}'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
   <noscript>You need to enable JavaScript to run this app.</noscript>
+  <!-- <button onclick = "facebookSignin()">Facebook Signin</button>
+<button onclick = "facebookSignout()">Facebook Signout</button> -->
   <div id="root"></div>
   <!--
       This HTML file is a template.
@@ -65,4 +92,30 @@
     -->
 </body>
 
+<!-- var provider = new firebase.auth.FacebookAuthProvider();
+
+function facebookSignin() {
+   firebase.auth().signInWithPopup(provider)
+   
+   .then(function(result) {
+      var token = result.credential.accessToken;
+      var user = result.user;
+		
+      console.log(token)
+      console.log(user)
+   }).catch(function(error) {
+      console.log(error.code);
+      console.log(error.message);
+   });
+}
+
+function facebookSignout() {
+   firebase.auth().signOut()
+   
+   .then(function() {
+      console.log('Signout successful!')
+   }, function(error) {
+      console.log('Signout failed')
+   });
+} -->
 </html>
