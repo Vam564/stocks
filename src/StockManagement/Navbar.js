@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Link, Route, Redirect, useHistory } from 'reac
 import { SMSContext } from '../ContextAPI/SMSContext'
 import firebase from '../firebase/config'
 import '../CSS/Navbar.css'
+import AnimatedLeaves from './AnimatedLeaves'
 
 const Navbar = () => {
     const {
@@ -12,12 +13,14 @@ const Navbar = () => {
             totalAmount
         },
         startSearch,
-        handleInput
+        handleInput,
+        handleInputSell
     } = useContext(SMSContext)
 
     /*                     Sign in and Sign out Configuration set up                       */
     const [cU, setCU] = useState('');
     useEffect(() => {
+       
         firebase.getUser().then(user => {
             if (user) {
                 setCU(user)
@@ -41,7 +44,7 @@ const Navbar = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [phonenumber, setPhonenumber] = useState("");
-
+    const [error, setError]=useState(null);
     const [routeRedirect, setRouteRedirect] = useState(false);
     const [routeRedirectReg, setRouteRedirectReg] = useState(false);
     let loginAlert;
@@ -109,6 +112,74 @@ const Navbar = () => {
     // }
 
 
+//Google Auth
+const onGoogleSubmit = event => {
+    firebase
+      .doSignInWithGoogle()
+      .then(socialAuthUser => {
+        setError(null);
+        setUser("name");
+        //this.props.history.push(ROUTES.HOME);
+      })
+      .catch(error => {
+        setError(error);
+      });
+ 
+    event.preventDefault();
+  };
+
+// Facebook auth
+
+const onFacebookSubmit = event => {
+    firebase
+      .doSignInWithFacebook()
+      .then(socialAuthUser => {
+        setError(null);
+        setUser("name");
+        //this.props.history.push(ROUTES.HOME);
+      })
+      .catch(error => {
+        setError(error);
+      });
+ 
+    event.preventDefault();
+  };
+
+  //twitter Auth
+
+ const  onTwitterSubmit = event => {
+    firebase
+      .doSignInWithTwitter()
+      .then(socialAuthUser => {
+        setError(null);
+        setUser("name");
+        //this.props.history.push(ROUTES.HOME);
+      })
+      .catch(error => {
+        setError(error);
+      });
+ 
+    event.preventDefault();
+  };
+
+  //github Auth
+
+  const onGithubSubmit = event => {
+    firebase
+      .doSignInWithGithub()
+      .then(socialAuthUser => {
+          alert("hi");
+        setError(null);
+        setUser("name");
+        //this.props.history.push(ROUTES.HOME);
+      })
+      .catch(error => {
+        setError(error);
+      });
+ 
+    event.preventDefault();
+  };
+ 
 
     return (
         <div>
@@ -116,7 +187,7 @@ const Navbar = () => {
                {JSON.stringify(cU,null,4)}
                {JSON.stringify(phonenumber,null,4)}
            </pre>  */}
-
+            <AnimatedLeaves></AnimatedLeaves>
             <header class="" id="stick">
                 <nav class=" navbar navbar-expand-lg navbar-light lighten-5 mb-4">
                     <Link to="/"><a class=" navbar-brand ml-5" href="#"><img src="https://zerodha.com/static/images/logo.svg" height="18px" width="130px" /><span></span></a></Link>
@@ -167,12 +238,11 @@ const Navbar = () => {
                             <li class="nav-item dropdown">
                                 {!user ? (
                                     <>
-                                        <a class="nav-link dropdown-toggle link" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                                        <a class="nav-link dropdown-toggle link " id="navbarDropdownMenuLink" data-toggle="dropdown"
                                             aria-haspopup="true" aria-expanded="false">More</a>
-                                        <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                                            <Link to="/funds"><a class="dropdown-item" href="#">Funds</a></Link>
-                                            <Link to="/atfirst" ><a class="dropdown-item" href="#">At First</a></Link>
-                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#frameModalBottom">Something else here</a>
+                                        <div class="dropdown-menu dropdown-primary " aria-labelledby="navbarDropdownMenuLink">
+                                            <Link to="/funds"><a class="dropdown-item mb-n2" href="#">Funds</a></Link>
+                                            <Link to="/favourites" ><a class="dropdown-item mt-n2 " href="#">My Favourites</a></Link>
                                         </div>
                                     </>
                                 ) : (
@@ -180,9 +250,8 @@ const Navbar = () => {
                                             <a class="nav-link dropdown-toggle link" id="navbarDropdownMenuLink" data-toggle="dropdown"
                                                 aria-haspopup="true" aria-expanded="false">More</a>
                                             <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                                                <Link to="/funds"><a class="dropdown-item" href="#">Funds</a></Link>
-                                                <a class="dropdown-item" href="#">At First</a>
-                                                <a class="dropdown-item" href="#">Something else here</a>
+                                            <Link to="/funds"><a class="dropdown-item mb-n2" href="#">Funds</a></Link>
+                                            <Link to="/favourites" ><a class="dropdown-item mt-n2 " href="#">My Favourites</a></Link>
                                             </div>
                                         </>
                                     )}
@@ -276,10 +345,10 @@ const Navbar = () => {
                                             <button type="button" class="btn btn-primary rounded px-3"><i class="fab fa-facebook" aria-hidden="true"></i></button>
                                             <button type="button" class="btn btn-primary rounded px-3"><i class="fab fa-facebook" aria-hidden="true"></i></button>
                                             <button type="button" class="btn btn-primary rounded px-3"><i class="fab fa-facebook" aria-hidden="true"></i></button> */}
-                                            <a href="#" class="fa fa-facebook mr-1"></a>
+                                            <a href="#" class="fa fa-facebook mr-1" data-dismiss="modal" onClick={onFacebookSubmit}></a>
                                             <a href="#" class="fa fa-twitter mr-1"></a>
-                                            <a href="#" class="fa fa-google mr-1"></a>
-                                            <a href="#" class="fa fa-linkedin mr-1"></a>
+                                            <a href="#" class="fa fa-google mr-1" data-dismiss="modal" onClick={onGoogleSubmit}></a>
+                                            <a href="#" class="fa fa-github mr-1" data-dismiss="modal"  onClick={onGithubSubmit}></a>
                                         </div>
 
                                     </div>

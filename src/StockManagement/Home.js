@@ -15,7 +15,7 @@ const Home = () => {
 
     } = useContext(SMSContext)
     return (
-        <div className="shadow-bottom">
+        <div className="shadow-bottom pb-5">
            <Link to="/">
            <div>
             <div className="mb-5">

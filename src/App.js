@@ -11,6 +11,7 @@ import Positions from './StockManagement/Positions';
 import Funds from './StockManagement/Funds';
 import Filter from './StockManagement/Filter'
 import AtFirst from './StockManagement/AtFirst';
+import Favourites from './StockManagement/Favourites';
 
 function App() {
   
@@ -26,7 +27,7 @@ function App() {
         <Route path="/stocks" exact component={Stocks} />
         <Route path="/positions" exact component={Positions} />
         <Route path="/filter" exact component={Filter} />
-        <Route path="/atfirst" exact component={AtFirst} />
+        <Route path="/favourites" exact component={Favourites} />
         <Route path="/funds" exact component={Funds} />
         </Switch>
         <Footer></Footer>

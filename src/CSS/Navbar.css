@@ -30,12 +30,12 @@
     top:93%;
     right:0;
 }
-@media screen and (min-height:100px),(max-height:1000px){
+@media (max-height:1000px){
     .top{
 visibility: hidden;
     }
 }
- @media screen and (min-height:2000px), (max-height:5000px){
+ @media (min-height:500px){
     .top{
 visibility: visible;
     }
@@ -91,3 +91,8 @@ visibility: visible;
     background: #007bb5;
     color: white;
   }
+  .fa-github {
+    background: black;
+    color: white;
+  }
+

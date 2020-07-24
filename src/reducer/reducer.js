@@ -1,6 +1,6 @@
 const reducer = (state, action) => {
     const { type, context } = action
-    const { stocks, search, isAPILoaded, count, float, value, stockData,stockDataSell, stocksBuyed,totalAmount,currentStock } = state
+    const { stocks, search, isAPILoaded, count, float, value, stockData,stockDataSell, stocksBuyed,stocksSelled,totalAmount,currentStock,favourites,indexArray } = state
     switch (type) {
         case 'API_SUCCESS': {
             return {
@@ -81,7 +81,8 @@ const reducer = (state, action) => {
             console.log(index)
             return {
                 ...state,
-               stocksBuyed:[...stocksBuyed,...stocks.filter((item,i)=>i==index)],
+               //stocksBuyed:[...stocksBuyed,...stocks.filter((item,i)=>i==index)],
+               stocksSelled:[...stocksSelled,...stocks.filter((item,i)=>i==index)],
                status:'SELL',
                totalAmount:Number((+totalAmount)+(+isAvailable))
 
@@ -130,6 +131,16 @@ const reducer = (state, action) => {
                 // stockData:{
                 //     price:currentStock.open
                 // }
+            }
+        }
+        case 'ADD_TO_FAV': {
+            const {index}=context
+            console.log(index)
+            return {
+                ...state,
+               fav:true,
+              indexArray:indexArray.includes(index) ?  ([...indexArray.filter((item,i)=>item!=index)]): ([...indexArray,index]) ,
+               favourites:[...favourites,...stocks.filter((item,i)=>i==index)]
             }
         }
      
